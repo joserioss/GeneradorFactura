@@ -3,6 +3,24 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
+<%
+	String nombre = (String) request.getAttribute("nombre");
+	String ciudad = (String) request.getAttribute("ciudad");
+	String pais = (String) request.getAttribute("pais");
+	String direccion = (String) request.getAttribute("direccion");
+	String empresa = (String) request.getAttribute("empresa");
+	Integer valvulas = (Integer) request.getAttribute("valvulas");
+	Integer turbo = (Integer) request.getAttribute("turbo");
+	Integer refri = (Integer) request.getAttribute("refri");
+	Integer frenos= (Integer) request.getAttribute("frenos");
+	Integer plumas = (Integer) request.getAttribute("plumas");
+	Integer totalValvulas = (Integer) request.getAttribute("totalValvulas");
+	Integer totalTurbo = (Integer) request.getAttribute("totalTurbo");
+	Integer totalRefri = (Integer) request.getAttribute("totalRefri");
+	Integer totalFrenos= (Integer) request.getAttribute("totalFrenos");
+	Integer totalPlumas = (Integer) request.getAttribute("totalPlumas");
+
+%>
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -41,24 +59,21 @@
 						<div class="row pb-5 p-5">
 							<div class="col-md-6">
 								<p class="font-weight-bold mb-4">Información de cliente</p>
-								<p class="mb-1">
-									Nombre:
-									<c:out value="${param.nombre}" />
-								</p>
+								<p class="mb-1">Nombre:</p>
 								<p>
-									Empresa:
-									<c:out value="${param.empresa}" />
-								</p>
-								<p class="mb-1">
-									Ciudad, país:
-									<c:out value="${param.ciudad}" />
-									,
-									<c:out value="${param.pais}" />
-								</p>
-								<p class="mb-1">
-									Dirección:
-									<c:out value="${param.direccion}" />
-								</p>
+									<%=nombre%></p>
+								<p>Empresa:</p>
+								<p>
+									<%=empresa%></p>
+								<p class="mb-1">Ciudad, país:</p>
+
+								<p>
+									<%=ciudad%></p>
+								<p>
+									<%=pais%></p>
+								<p class="mb-1">Dirección:</p>
+								<p>
+									<%=direccion%></p>
 							</div>
 
 							<div class="col-md-6 text-right">
@@ -95,36 +110,36 @@
 											<td>Valvulas Titanio</td>
 											<td>Valvulas de carrera</td>
 											<td>$120.000</td>
-											<td>0</td>
-											<td>$0</td>
+											<td><%= valvulas %></td>
+											<td><%= totalValvulas %></td>
 										</tr>
 										<tr>
 											<td>Turbo Full Carrera</td>
 											<td>Turbo de competicion multimarca</td>
 											<td>$1.700.000</td>
-											<td>0</td>
-											<td>$0</td>
+											<td><%= turbo %></td>
+											<td><%= totalTurbo %></td>
 										</tr>
 										<tr>
 											<td>Kit de Freno Competicion</td>
 											<td>Juego de discos, balatas, caliper de competicion</td>
 											<td>$760.000</td>
-											<td>0</td>
-											<td>$0</td>
+											<td><%= frenos %></td>
+											<td><%= totalFrenos %></td>
 										</tr>
 										<tr>
 											<td>Sistema de refrigeracion</td>
 											<td>Sistema enfriamiento motor Carrera</td>
 											<td>$2.300.000</td>
-											<td>0</td>
-											<td>$0</td>
+											<td><%= refri %></td>
+											<td><%= totalRefri %></td>
 										</tr>
 										<tr>
 											<td>Plumillas Limpiaparabrisas standar</td>
 											<td>plumillas para la lluvia</td>
 											<td>$10.000</td>
-											<td>0</td>
-											<td>$0</td>
+											<td><%= plumas %></td>
+											<td><%= totalPlumas %></td>
 										</tr>
 									</tbody>
 								</table>

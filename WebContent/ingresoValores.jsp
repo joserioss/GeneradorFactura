@@ -44,7 +44,7 @@
 						</div>
 						<div
 							style="margin: 0 auto; padding-left: 20px; padding-right: 20px;">
-							<form action="facturaGenerada.jsp" method="GET">
+							<form action="GeneradorRespuestas" method="GET">
 								<div class="row">
 									<div class="col-sm">
 										<label for="exampleFormControlInput1">Nombre Completo</label>
@@ -94,7 +94,7 @@
 											<tr>
 												<td>Valvulas Titanio</td>
 												<td>Valvulas de carrera</td>
-												<td>$120.000</td>
+												<td id="valorValvulas">$120.000</td>
 												<td><input class="form-control form-control-sm"
 													type="number" name="valvulas" id="valvulas"
 													placeholder="cantidad" required></td>
