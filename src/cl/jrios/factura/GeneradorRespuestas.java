@@ -2,6 +2,7 @@ package cl.jrios.factura;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DecimalFormat;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,10 +36,21 @@ public class GeneradorRespuestas extends HttpServlet {
 		int totalFrenos = frenos * 760000;
 		int totalValvulas = valvulas * 120000;
 
-		int valorNetoTotal = totalValvulas + totalTurbo + totalFrenos + totalRefri + totalPlumas;
-		int descuento = (int) (valorNetoTotal * 0.1);
-		int valorTotal = valorNetoTotal - descuento;
+		int valorNetoTotalI = totalValvulas + totalTurbo + totalFrenos + totalRefri + totalPlumas;
+		int descuento = (int) (valorNetoTotalI * 0.1);
+		int valorTotalI = valorNetoTotalI - descuento;
 
+		String patron = "###,###";
+		DecimalFormat decimalFormat = new DecimalFormat(patron);
+		
+		String valorNetoTotal = decimalFormat.format(valorNetoTotalI);
+		String valorTotal = decimalFormat.format(valorTotalI);
+		String totalPlumasFormateado = decimalFormat.format(totalPlumas);
+		String totalRefriFormateado = decimalFormat.format(totalRefri);
+		String totalTurboFormateado = decimalFormat.format(totalTurbo);
+		String totalFrenosFormateado = decimalFormat.format(totalFrenos);
+		String totalValvulasFormateado = decimalFormat.format(totalValvulas);
+		
 		req.setAttribute("nombre", nombre);
 		req.setAttribute("empresa", empresa);
 		req.setAttribute("ciudad", ciudad);
@@ -51,11 +63,11 @@ public class GeneradorRespuestas extends HttpServlet {
 		req.setAttribute("frenos", frenos);
 		req.setAttribute("valvulas", valvulas);
 		
-		req.setAttribute("totalPlumas", totalPlumas);
-		req.setAttribute("totalRefri", totalRefri);
-		req.setAttribute("totalTurbo", totalTurbo);
-		req.setAttribute("totalFrenos", totalFrenos);
-		req.setAttribute("totalValvulas", totalValvulas);
+		req.setAttribute("totalPlumas", totalPlumasFormateado);
+		req.setAttribute("totalRefri", totalRefriFormateado);
+		req.setAttribute("totalTurbo", totalTurboFormateado);
+		req.setAttribute("totalFrenos", totalFrenosFormateado);
+		req.setAttribute("totalValvulas", totalValvulasFormateado);
 
 		req.setAttribute("valorNetoTotal", valorNetoTotal);
 		req.setAttribute("descuento", descuento);
