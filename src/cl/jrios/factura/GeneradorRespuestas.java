@@ -16,58 +16,53 @@ public class GeneradorRespuestas extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String nombre;
-		String empresa;
-		String ciudad;
-		String pais;
-		String direccion;
-		
-		int plumas;
-		int refri;
-		int turbo;
-		int valvulas;
-		int frenos;
-		
-		int totalPlumas; 
-		int totalRefri;
-		int totalTurbo;
-		int totalFrenos;
-		int totalValvulas;
-		
-		nombre = req.getParameter("nombre");
-		empresa = req.getParameter("empresa");
-		ciudad = req.getParameter("ciudad");
-		pais = req.getParameter("pais");
-		direccion = req.getParameter("direccion");
 
-		plumas = Integer.parseInt(req.getParameter("plumas"));
-		refri = Integer.parseInt(req.getParameter("refri"));
-		turbo = Integer.parseInt(req.getParameter("turbo"));
-		frenos = Integer.parseInt(req.getParameter("frenos"));
-		valvulas = Integer.parseInt(req.getParameter("valvulas"));
-		
-		totalPlumas = plumas * 10000;
-		totalRefri = refri * 2300000;
-		totalTurbo = turbo * 1700000;
-		totalFrenos = frenos * 760000;
-		totalValvulas = valvulas * 120000;
-		
+		String nombre = req.getParameter("nombre");
+		String empresa = req.getParameter("empresa");
+		String ciudad = req.getParameter("ciudad");
+		String pais = req.getParameter("pais");
+		String direccion = req.getParameter("direccion");
+
+		int plumas = Integer.parseInt(req.getParameter("plumas"));
+		int refri = Integer.parseInt(req.getParameter("refri"));
+		int turbo = Integer.parseInt(req.getParameter("turbo"));
+		int frenos = Integer.parseInt(req.getParameter("frenos"));
+		int valvulas = Integer.parseInt(req.getParameter("valvulas"));
+
+		int totalPlumas = plumas * 10000;
+		int totalRefri = refri * 2300000;
+		int totalTurbo = turbo * 1700000;
+		int totalFrenos = frenos * 760000;
+		int totalValvulas = valvulas * 120000;
+
+		int valorNetoTotal = totalValvulas + totalTurbo + totalFrenos + totalRefri + totalPlumas;
+		int descuento = (int) (valorNetoTotal * 0.1);
+		int valorTotal = valorNetoTotal - descuento;
+
 		req.setAttribute("nombre", nombre);
 		req.setAttribute("empresa", empresa);
 		req.setAttribute("ciudad", ciudad);
 		req.setAttribute("pais", pais);
 		req.setAttribute("direccion", direccion);
+		
 		req.setAttribute("plumas", plumas);
 		req.setAttribute("refri", refri);
 		req.setAttribute("turbo", turbo);
 		req.setAttribute("frenos", frenos);
 		req.setAttribute("valvulas", valvulas);
+		
 		req.setAttribute("totalPlumas", totalPlumas);
 		req.setAttribute("totalRefri", totalRefri);
 		req.setAttribute("totalTurbo", totalTurbo);
 		req.setAttribute("totalFrenos", totalFrenos);
 		req.setAttribute("totalValvulas", totalValvulas);
-		req.getRequestDispatcher("facturaGenerada.jsp").forward(req, resp);;
+
+		req.setAttribute("valorNetoTotal", valorNetoTotal);
+		req.setAttribute("descuento", descuento);
+		req.setAttribute("valorTotal", valorTotal);
+
+		req.getRequestDispatcher("facturaGenerada.jsp").forward(req, resp);
+		;
 	}
 
 }

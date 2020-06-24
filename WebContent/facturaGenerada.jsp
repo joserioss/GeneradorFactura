@@ -9,16 +9,22 @@
 	String pais = (String) request.getAttribute("pais");
 	String direccion = (String) request.getAttribute("direccion");
 	String empresa = (String) request.getAttribute("empresa");
+	
 	Integer valvulas = (Integer) request.getAttribute("valvulas");
 	Integer turbo = (Integer) request.getAttribute("turbo");
 	Integer refri = (Integer) request.getAttribute("refri");
 	Integer frenos= (Integer) request.getAttribute("frenos");
 	Integer plumas = (Integer) request.getAttribute("plumas");
+	
 	Integer totalValvulas = (Integer) request.getAttribute("totalValvulas");
 	Integer totalTurbo = (Integer) request.getAttribute("totalTurbo");
 	Integer totalRefri = (Integer) request.getAttribute("totalRefri");
 	Integer totalFrenos= (Integer) request.getAttribute("totalFrenos");
 	Integer totalPlumas = (Integer) request.getAttribute("totalPlumas");
+	
+	Integer valorNetoTotal = (Integer) request.getAttribute("valorNetoTotal");
+	Integer descuento = (Integer) request.getAttribute("descuento");
+	Integer valorTotal = (Integer) request.getAttribute("valorTotal");
 
 %>
 <html>
@@ -149,7 +155,7 @@
 						<div class="d-flex flex-row-reverse bg-dark text-white p-4">
 							<div class="py-3 px-5 text-right">
 								<div class="mb-2">VALOR TOTAL</div>
-								<div class="h2 font-weight-light">0</div>
+								<div class="h2 font-weight-light"><%= valorTotal %></div>
 							</div>
 
 							<div class="py-3 px-5 text-right">
@@ -159,7 +165,7 @@
 
 							<div class="py-3 px-5 text-right">
 								<div class="mb-2">VALOR TOTAL NETO</div>
-								<div class="h2 font-weight-light">$0</div>
+								<div class="h2 font-weight-light"><%= valorNetoTotal %></div>
 							</div>
 						</div>
 					</div>
