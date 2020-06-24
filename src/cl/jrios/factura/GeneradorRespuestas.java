@@ -17,6 +17,12 @@ public class GeneradorRespuestas extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		int precioPlumas = 10000;
+		int precioRefri = 2300000;
+		int precioTurbo = 1700000;
+		int precioFrenos = 760000;
+		int precioValvulas = 120000;
 
 		String nombre = req.getParameter("nombre");
 		String empresa = req.getParameter("empresa");
@@ -30,11 +36,11 @@ public class GeneradorRespuestas extends HttpServlet {
 		int frenos = Integer.parseInt(req.getParameter("frenos"));
 		int valvulas = Integer.parseInt(req.getParameter("valvulas"));
 
-		int totalPlumas = plumas * 10000;
-		int totalRefri = refri * 2300000;
-		int totalTurbo = turbo * 1700000;
-		int totalFrenos = frenos * 760000;
-		int totalValvulas = valvulas * 120000;
+		int totalPlumas = plumas * precioPlumas;
+		int totalRefri = refri * precioRefri; 
+		int totalTurbo = turbo * precioTurbo; 
+		int totalFrenos = frenos * precioFrenos;
+		int totalValvulas = valvulas * precioValvulas;
 
 		int valorNetoTotalI = totalValvulas + totalTurbo + totalFrenos + totalRefri + totalPlumas;
 		int descuento = (int) (valorNetoTotalI * 0.1);
