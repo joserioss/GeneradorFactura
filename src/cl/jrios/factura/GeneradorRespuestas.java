@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/GeneradorRespuestas")
+@WebServlet("/generadorRespuestas")
 public class GeneradorRespuestas extends HttpServlet {
 
 	private static final long serialVersionUID = 1277066444033815114L;

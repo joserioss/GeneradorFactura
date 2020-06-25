@@ -44,7 +44,9 @@
 						</div>
 						<div
 							style="margin: 0 auto; padding-left: 20px; padding-right: 20px;">
-							<form action="GeneradorRespuestas" method="GET">
+							
+							<h1> Bienvenido: <c:out value="${param.login}" /> </h1>
+							<form action="generadorRespuestas" method="GET">
 								<div class="row">
 									<div class="col-sm">
 										<label for="exampleFormControlInput1">Nombre Completo</label>
