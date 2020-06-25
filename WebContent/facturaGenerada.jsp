@@ -4,28 +4,31 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <%
+	HttpSession misesion = request.getSession();
+	String nombreLogin;
+	nombreLogin = (String) misesion.getAttribute("NombreLogin");
+
 	String nombre = (String) request.getAttribute("nombre");
 	String ciudad = (String) request.getAttribute("ciudad");
 	String pais = (String) request.getAttribute("pais");
 	String direccion = (String) request.getAttribute("direccion");
 	String empresa = (String) request.getAttribute("empresa");
-	
+
 	Integer valvulas = (Integer) request.getAttribute("valvulas");
 	Integer turbo = (Integer) request.getAttribute("turbo");
 	Integer refri = (Integer) request.getAttribute("refri");
-	Integer frenos= (Integer) request.getAttribute("frenos");
+	Integer frenos = (Integer) request.getAttribute("frenos");
 	Integer plumas = (Integer) request.getAttribute("plumas");
-	
+
 	String totalValvulas = (String) request.getAttribute("totalValvulas");
 	String totalTurbo = (String) request.getAttribute("totalTurbo");
 	String totalRefri = (String) request.getAttribute("totalRefri");
-	String totalFrenos= (String) request.getAttribute("totalFrenos");
+	String totalFrenos = (String) request.getAttribute("totalFrenos");
 	String totalPlumas = (String) request.getAttribute("totalPlumas");
-	
+
 	String valorNetoTotal = (String) request.getAttribute("valorNetoTotal");
 	Integer descuento = (Integer) request.getAttribute("descuento");
 	String valorTotal = (String) request.getAttribute("valorTotal");
-
 %>
 <html>
 <head>
@@ -74,11 +77,11 @@
 								<p class="mb-1">Ciudad, país:</p>
 
 								<p>
-									<%=ciudad%> 
+									<%=ciudad%>
 									<spam> , </spam>
 									<%=pais%>
 								</p>
-								
+
 								<p class="mb-1">Dirección:</p>
 								<p>
 									<%=direccion%></p>
@@ -118,36 +121,36 @@
 											<td>Valvulas Titanio</td>
 											<td>Valvulas de carrera</td>
 											<td>$120.000</td>
-											<td><%= valvulas %></td>
-											<td><spam> $</spam><%= totalValvulas %></td>
+											<td><%=valvulas%></td>
+											<td><spam> $</spam><%=totalValvulas%></td>
 										</tr>
 										<tr>
 											<td>Turbo Full Carrera</td>
 											<td>Turbo de competicion multimarca</td>
 											<td>$1.700.000</td>
-											<td><%= turbo %></td>
-											<td><spam> $</spam><%= totalTurbo %></td>
+											<td><%=turbo%></td>
+											<td><spam> $</spam><%=totalTurbo%></td>
 										</tr>
 										<tr>
 											<td>Kit de Freno Competicion</td>
 											<td>Juego de discos, balatas, caliper de competicion</td>
 											<td>$760.000</td>
-											<td><%= frenos %></td>
-											<td><spam> $</spam><%= totalFrenos %></td>
+											<td><%=frenos%></td>
+											<td><spam> $</spam><%=totalFrenos%></td>
 										</tr>
 										<tr>
 											<td>Sistema de refrigeracion</td>
 											<td>Sistema enfriamiento motor Carrera</td>
 											<td>$2.300.000</td>
-											<td><%= refri %></td>
-											<td><spam> $</spam><%= totalRefri %></td>
+											<td><%=refri%></td>
+											<td><spam> $</spam><%=totalRefri%></td>
 										</tr>
 										<tr>
 											<td>Plumillas Limpiaparabrisas standar</td>
 											<td>plumillas para la lluvia</td>
 											<td>$10.000</td>
-											<td><%= plumas %></td>
-											<td><spam> $</spam><%= totalPlumas %></td>
+											<td><%=plumas%></td>
+											<td><spam> $</spam><%=totalPlumas%></td>
 										</tr>
 									</tbody>
 								</table>
@@ -157,7 +160,8 @@
 						<div class="d-flex flex-row-reverse bg-dark text-white p-4">
 							<div class="py-3 px-5 text-right">
 								<div class="mb-2">VALOR TOTAL</div>
-								<div class="h2 font-weight-light"><spam> $</spam><%= valorTotal %></div>
+								<div class="h2 font-weight-light">
+									<spam> $</spam><%=valorTotal%></div>
 							</div>
 
 							<div class="py-3 px-5 text-right">
@@ -167,7 +171,8 @@
 
 							<div class="py-3 px-5 text-right">
 								<div class="mb-2">VALOR TOTAL NETO</div>
-								<div class="h2 font-weight-light"><spam> $</spam><%= valorNetoTotal %></div>
+								<div class="h2 font-weight-light">
+									<spam> $</spam><%=valorNetoTotal%></div>
 							</div>
 						</div>
 					</div>
@@ -179,7 +184,15 @@
 			by : <a class="text-light" target="_blank"
 				href="http://totoprayogo.com">totoprayogo.com</a>
 		</div>
+		<div>
+			<h4 class = "text-center">
+				Estimado/a:
+				<%=nombreLogin%>
+				¿Quieres <a href="logout">Cerrar Sesion<span class="sr-only">(current)</span>
+				</a> ?
+			</h4>
 
+		</div>
 	</div>
 </body>
 </html>

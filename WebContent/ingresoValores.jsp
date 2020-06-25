@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -38,14 +39,26 @@
 						<hr class="my-5">
 						<div
 							style="margin: 0 auto; padding-left: 20px; padding-right: 20px; padding-bottom: 20px;">
-
-
-
 						</div>
+
+
 						<div
 							style="margin: 0 auto; padding-left: 20px; padding-right: 20px;">
-							
-							<h1> Bienvenido: <c:out value="${param.login}" /> </h1>
+
+							<div>
+
+								<h3>
+									Bienvenido/a:
+									<c:out value="${param.login}" />
+								</h3>
+								<h5>
+									¿Quieres <a href="logout">Cerrar Sesion<span
+										class="sr-only">(current)</span>
+									</a> ?
+								</h5>
+
+							</div>
+
 							<form action="generadorRespuestas" method="GET">
 								<div class="row">
 									<div class="col-sm">
@@ -57,29 +70,29 @@
 									<div class="col-sm">
 										<label for="exampleFormControlInput1">Empresa</label> <input
 											type="text" class="form-control" id="empresa" name="empresa"
-											required placeholder="su nombre..." style="width: 300px;">
+											required placeholder="su empresa..." style="width: 300px;">
 									</div>
 									<div class="col-sm">
 										<label for="exampleFormControlInput1">Rut</label> <input
 											type="text" class="form-control" id="rut" name="rut" required
-											placeholder="su nombre..." style="width: 300px;">
+											placeholder="su rut..." style="width: 300px;">
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-sm">
 										<label for="Direccion">Direccion</label> <input type="text"
 											class="form-control" id="direccion" required name="direccion"
-											placeholder="su nombre..." style="width: 300px;">
+											placeholder="su direccion..." style="width: 300px;">
 									</div>
 									<div class="col-sm">
 										<label for="exampleFormControlInput1">Ciudad</label> <input
 											type="text" class="form-control" id="ciudad" name="ciudad"
-											required placeholder="su nombre..." style="width: 300px;">
+											required placeholder="su ciudad..." style="width: 300px;">
 									</div>
 									<div class="col-sm">
 										<label for="exampleFormControlInput1">Pais</label> <input
 											type="text" class="form-control" id="pais" name="pais"
-											required placeholder="su nombre..." style="width: 300px;">
+											required placeholder="su pais..." style="width: 300px;">
 									</div>
 								</div>
 								<div style="padding-top: 50px;">

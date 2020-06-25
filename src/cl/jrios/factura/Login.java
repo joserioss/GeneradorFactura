@@ -13,48 +13,48 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @WebServlet("/login")
-public class Login extends HttpServlet{
+public class Login extends HttpServlet {
 
 	private static final long serialVersionUID = 6318258943937733981L;
 
 	private static final String LOGIN = "jose";
 
-    private static final String PASS = "123456";
-    
-    private static final Logger logger = Logger.getLogger(Login.class.getName());
+	private static final String PASS = "123456";
+
+	private static final Logger logger = Logger.getLogger(Login.class.getName());
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String requestLogin = "";
-        String requestPass = "";
+		String requestPass = "";
 
-        PrintWriter writer = resp.getWriter();
+		PrintWriter writer = resp.getWriter();
 
-        requestLogin = req.getParameter("login");
-        requestPass = req.getParameter("pass");
+		requestLogin = req.getParameter("login");
+		requestPass = req.getParameter("pass");
 
-        boolean usuarioOk = requestLogin.equals(LOGIN);
-        boolean passwordOk = requestLogin.equals(LOGIN);
+		boolean usuarioOk = requestLogin.equals(LOGIN);
+		boolean passwordOk = requestPass.equals(PASS);
 
-        if (usuarioOk && passwordOk) {
+		if (usuarioOk && passwordOk) {
 
-            HttpSession sesionUsuario = req.getSession(true);
-            sesionUsuario.setAttribute("Nombre", requestLogin);
-            
-            req.setAttribute("nombre", requestLogin);
-            
-            RequestDispatcher rd = req.getRequestDispatcher("ingresoValores.jsp");
-            rd.forward(req, resp);
+			HttpSession sesionUsuario = req.getSession(true);
+			sesionUsuario.setAttribute("NombreLogin", requestLogin);
+			RequestDispatcher rd = req.getRequestDispatcher("ingresoValores.jsp");
+			rd.forward(req, resp);
 
-        } else {
+		} else if (usuarioOk && !passwordOk) {
+			writer.println("<script type=\"text/javascript\">");
+			writer.println("alert('Password incorrecto');");
+			writer.println("location='index.jsp';");
+			writer.println("</script>");
+		} else if (!usuarioOk) {
 
-            writer.println("<script type=\"text/javascript\">");
-            writer.println("alert('Usuario o password incorrecto');");
-            writer.println("location='index.jsp';");
-            writer.println("</script>");
+			writer.println("<script type=\"text/javascript\">");
+			writer.println("alert('Usuario incorrecto');");
+			writer.println("location='index.jsp';");
+			writer.println("</script>");
 
-        }
+		}
 	}
 
-
-    
 }
