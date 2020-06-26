@@ -12,14 +12,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
 @WebServlet("/login")
 public class Login extends HttpServlet {
 
 	private static final long serialVersionUID = 6318258943937733981L;
 
-	private static final String LOGIN = "jose";
+	private static final String LOGIN = "user";
 
-	private static final String PASS = "123456";
+	private static final String PASS = "admin";
 
 	private static final Logger logger = Logger.getLogger(Login.class.getName());
 
@@ -43,16 +44,14 @@ public class Login extends HttpServlet {
 			rd.forward(req, resp);
 
 		} else if (usuarioOk && !passwordOk) {
-			writer.println("<script type=\"text/javascript\">");
-			writer.println("alert('Password incorrecto');");
-			writer.println("location='index.jsp';");
-			writer.println("</script>");
+			
+			req.setAttribute("mostrarError1", new Boolean(true));
+			req.getRequestDispatcher("index.jsp").forward(req, resp);
+			
 		} else if (!usuarioOk) {
 
-			writer.println("<script type=\"text/javascript\">");
-			writer.println("alert('Usuario incorrecto');");
-			writer.println("location='index.jsp';");
-			writer.println("</script>");
+			req.setAttribute("mostrarError2", new Boolean(true));
+			req.getRequestDispatcher("index.jsp").forward(req, resp);
 
 		}
 	}
